@@ -65,9 +65,9 @@ Each document type has a main `.tex` file:
 
 These files:
 - Set up the document class
-- Configure personal information
 - Import section files using `\input{...}`
 - Generate the final PDF
+- Pull in shared config and personal information
 
 ### 3. **Section Files**
 Content is organized into separate `.tex` files for each section:
@@ -159,10 +159,14 @@ xelatex -output-directory=compiled latex/coverletter/coverletter.tex
 
 ### 1. **Update Personal Information**
 
-Edit the main document files:
-- `latex/cv/cv.tex` (lines 48-79)
-- `latex/resume/resume.tex` (lines 48-79)
-- `latex/coverletter/coverletter.tex` (lines 48-99)
+Edit the shared personal info file:
+- `latex/shared/personal-info.tex`
+
+If you want a profile photo or quote in only one document, override before `\input`:
+```latex
+\renewcommand{\includeProfilePhoto}{1}
+\renewcommand{\personalQuote}{Your quote here}
+```
 
 **Available commands:**
 ```latex
@@ -525,9 +529,9 @@ You can define custom commands in section files:
 
 | Document | Main File | Sections Directory |
 |----------|-----------|-------------------|
-| CV | `latex/cv/cv.tex` | `latex/cv/` |
-| Resume | `latex/resume/resume.tex` | `latex/resume/` |
-| Cover Letter | `latex/coverletter/coverletter.tex` | N/A |
+| CV | `latex/cv/cv.tex` | `latex/shared/` |
+| Resume | `latex/resume/resume.tex` | `latex/shared/` |
+| Cover Letter | `latex/coverletter/coverletter.tex` | `latex/shared/` |
 
 ---
 
@@ -537,8 +541,8 @@ This repository provides a professional, modular LaTeX-based CV system. Key poin
 
 1. **Structure**: Main documents import modular section files
 2. **Build**: Use `make` to compile all documents
-3. **Customization**: Edit section files for content, main files for personal info/styling
+3. **Customization**: Edit shared files for content/personal info/styling; main files for structure
 4. **Output**: PDFs generated in `compiled/` directory
 5. **Flexibility**: Easy to enable/disable sections and customize appearance
 
-Start by updating personal information in the main document files, then modify section content as needed. Compile frequently to see your changes!
+Start by updating personal information in `latex/shared/personal-info.tex`, then modify section content as needed. Compile frequently to see your changes!
