@@ -192,7 +192,7 @@ Edit the main document files:
 
 ### 2. **Modify Section Content**
 
-#### **Experience Section** (`latex/cv/experience.tex` or `latex/resume/experience.tex`)
+#### **Experience Section** (`latex/shared/experience.tex`)
 
 **Structure:**
 ```latex
@@ -230,7 +230,7 @@ Edit the main document files:
   }
 ```
 
-#### **Education Section** (`latex/cv/education.tex`)
+#### **Education Section** (`latex/shared/education.tex`)
 
 **Structure:**
 ```latex
@@ -250,7 +250,7 @@ Edit the main document files:
 \end{cventries}
 ```
 
-#### **Skills Section** (`latex/cv/skills.tex`)
+#### **Skills Section** (`latex/shared/skills.tex`)
 
 **Structure:**
 ```latex
@@ -289,11 +289,11 @@ highlighting your key qualifications and experience.
 #### **Other Sections**
 
 Similar patterns for:
-- **Honors** (`honors.tex`) - Uses `\cvhonor{position}{title}{location}{date}`
-- **Certificates** (`certificates.tex`) - Uses `\cventry`
-- **Writing** (`writing.tex`) - Publications, articles
-- **Presentations** (`presentation.tex`) - Conference talks
-- **Committees** (`committees.tex`) - Professional service
+- **Honors** (`latex/shared/honors.tex`) - Uses `\cvhonor{position}{title}{location}{date}`
+- **Certificates** (`latex/shared/certificates.tex`) - Uses `\cventry`
+- **Writing** (`latex/shared/writing.tex`) - Publications, articles
+- **Presentations** (`latex/shared/presentation.tex`) - Conference talks
+- **Committees** (`latex/shared/committees.tex`) - Professional service
 
 ### 3. **Enable/Disable Sections**
 
@@ -301,8 +301,8 @@ In the main document files (`cv.tex`, `resume.tex`), comment out sections you do
 
 ```latex
 % Comment out to disable a section
-% \input{latex/cv/writing.tex}
-% \input{latex/cv/committees.tex}
+% \input{latex/shared/writing.tex}
+% \input{latex/shared/committees.tex}
 ```
 
 ### 4. **Customize Colors**
@@ -402,14 +402,14 @@ More content here.
 
 ### Task 1: Add a New Experience Entry
 
-1. Open `latex/cv/experience.tex` (or `latex/resume/experience.tex`)
+1. Open `latex/shared/experience.tex`
 2. Add a new `\cventry` block before `\end{cventries}`
 3. Fill in the 5 parameters: position, company, location, dates, description
 4. Compile: `make cv.pdf` or `make resume.pdf`
 
 ### Task 2: Update Skills
 
-1. Open `latex/cv/skills.tex`
+1. Open `latex/shared/skills.tex`
 2. Modify existing `\cvskill` entries or add new ones
 3. Compile
 
@@ -432,10 +432,9 @@ More content here.
 
 ### Task 5: Create Resume from CV
 
-1. Copy relevant sections from `latex/cv/` to `latex/resume/`
-2. Edit `latex/resume/resume.tex` to include only desired sections
-3. Add summary section (resume-specific)
-4. Compile: `make resume.pdf`
+1. Edit `latex/resume/resume.tex` to include only desired sections from `latex/shared/`
+2. Add summary section (resume-specific)
+3. Compile: `make resume.pdf`
 
 ---
 
@@ -543,4 +542,3 @@ This repository provides a professional, modular LaTeX-based CV system. Key poin
 5. **Flexibility**: Easy to enable/disable sections and customize appearance
 
 Start by updating personal information in the main document files, then modify section content as needed. Compile frequently to see your changes!
-
