@@ -9,6 +9,10 @@ permissions:
 
 jobs:
   changes:
+    # Only needed to gate the release job, which runs on pushes to master.
+    # On push, paths-filter diffs with git and needs no pull-requests scope,
+    # which this workflow's contents-only token would otherwise withhold.
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     outputs:
