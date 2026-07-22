@@ -12,22 +12,10 @@
 
 <div align="center">
   <a href="https://github.com/grafanaKibana/LatexCV/actions/workflows/main.yml">
-    <img alt="GitHub Actions" src="https://github.com/grafanaKibana/LatexCV/actions/workflows/main.yml/badge.svg" />
+    <img alt="Build" src="https://img.shields.io/github/actions/workflow/status/grafanaKibana/LatexCV/main.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white&labelColor=111827&label=build" />
   </a>
   <a href="https://github.com/grafanaKibana/LatexCV/releases/latest">
-    <img alt="Latest Release" src="https://img.shields.io/github/v/release/grafanaKibana/LatexCV?label=latest%20release" />
-  </a>
-</div>
-
-<div align="center">
-  <a href="https://github.com/grafanaKibana/LatexCV/releases/latest/download/resume.pdf">
-    <img alt="Download Résumé" src="https://img.shields.io/badge/résumé-download%20pdf-green.svg" />
-  </a>
-  <a href="https://github.com/grafanaKibana/LatexCV/releases/latest/download/cv.pdf">
-    <img alt="Download CV" src="https://img.shields.io/badge/cv-download%20pdf-green.svg" />
-  </a>
-  <a href="https://github.com/grafanaKibana/LatexCV/releases/latest/download/coverletter.pdf">
-    <img alt="Download Cover Letter" src="https://img.shields.io/badge/cover%20letter-download%20pdf-green.svg" />
+    <img alt="Latest Release" src="https://img.shields.io/github/v/release/grafanaKibana/LatexCV?style=for-the-badge&logo=github&logoColor=white&labelColor=111827&color=22c55e&label=release" />
   </a>
 </div>
 
@@ -41,13 +29,15 @@ The badges above always link to the freshest documents: every push to `master` c
 
 ## Download
 
-The latest compiled documents are always available from the newest release:
+The latest compiled documents are always attached to the newest [release](https://github.com/grafanaKibana/LatexCV/releases/latest):
 
-| Document | Download |
-| --- | --- |
-| Résumé | [resume.pdf](https://github.com/grafanaKibana/LatexCV/releases/latest/download/resume.pdf) |
-| CV | [cv.pdf](https://github.com/grafanaKibana/LatexCV/releases/latest/download/cv.pdf) |
-| Cover Letter | [coverletter.pdf](https://github.com/grafanaKibana/LatexCV/releases/latest/download/coverletter.pdf) |
+<div align="center">
+
+| Document | Résumé | CV | Cover Letter |
+| :------- | :----: | :----: | :----: |
+| **Download** | [![Download resume.pdf](https://img.shields.io/badge/resume.pdf-Download-22c55e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/resume.pdf) | [![Download cv.pdf](https://img.shields.io/badge/cv.pdf-Download-38bdf8?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/cv.pdf) | [![Download coverletter.pdf](https://img.shields.io/badge/coverletter.pdf-Download-F59E0B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/coverletter.pdf) |
+
+</div>
 
 The `releases/latest/download/<file>` links resolve to the assets of the most recent release, so they never go stale.
 
@@ -87,7 +77,7 @@ In either case, this results in the creation of the corresponding ``.pdf`` files
 Releases are produced automatically by the [Compile PDFs workflow](https://github.com/grafanaKibana/LatexCV/actions/workflows/main.yml):
 
 1. On every push and pull request the LaTeX sources are compiled and uploaded as workflow artifacts.
-2. On a push to `master`, the compiled PDFs are additionally attached to a new GitHub Release tagged `vYYYY.MM.DD-<run number>`.
+2. On a push to `master`, the compiled PDFs are additionally attached to a new GitHub Release named JetBrains-style — `CVBuild <year>.<iteration>` (e.g. `CVBuild 2026.1`), where the iteration increments per release and resets each year.
 
 ## Credit
 

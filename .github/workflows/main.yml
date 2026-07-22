@@ -54,6 +54,13 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
+    # Serialize releases so overlapping pushes to master cannot read the same
+    # iteration and race to the same CVBuild-<year>.<iteration> tag. Queued runs
+    # wait (never cancelled) so every merge still gets its own sequential release.
+    concurrency:
+      group: release-master
+      cancel-in-progress: false
+
     steps:
     - name: Download compiled PDFs
       uses: actions/download-artifact@v6
@@ -61,21 +68,34 @@ jobs:
         name: compiled
         path: release-files
 
-    - name: Compute release tag
-      id: tag
-      run: echo "tag=v$(date +'%Y.%m.%d')-${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+    - name: Compute release name
+      id: build
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        year="$(date +'%Y')"
+        # JetBrains-style versioning: CVBuild <year>.<iteration>, where the
+        # iteration is bumped per release and resets when the year rolls over.
+        iteration="$(gh release list \
+          --repo "${{ github.repository }}" \
+          --limit 1000 \
+          --json tagName \
+          --jq "[.[] | .tagName | select(startswith(\"CVBuild-${year}.\")) | ltrimstr(\"CVBuild-${year}.\") | tonumber] | max // 0")"
+        iteration="$((iteration + 1))"
+        echo "tag=CVBuild-${year}.${iteration}" >> "$GITHUB_OUTPUT"
+        echo "name=CVBuild ${year}.${iteration}" >> "$GITHUB_OUTPUT"
 
     - name: Publish release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ steps.tag.outputs.tag }}
-        name: CV build ${{ steps.tag.outputs.tag }}
+        tag_name: ${{ steps.build.outputs.tag }}
+        name: ${{ steps.build.outputs.name }}
         body: |
           Automatically generated from ${{ github.sha }}.
 
           Download the latest documents:
 
-          - [resume.pdf](https://github.com/${{ github.repository }}/releases/latest/download/resume.pdf)
-          - [cv.pdf](https://github.com/${{ github.repository }}/releases/latest/download/cv.pdf)
-          - [coverletter.pdf](https://github.com/${{ github.repository }}/releases/latest/download/coverletter.pdf)
+          | Document | Résumé | CV | Cover Letter |
+          | --- | --- | --- | --- |
+          | Download | [resume.pdf](https://github.com/${{ github.repository }}/releases/latest/download/resume.pdf) | [cv.pdf](https://github.com/${{ github.repository }}/releases/latest/download/cv.pdf) | [coverletter.pdf](https://github.com/${{ github.repository }}/releases/latest/download/coverletter.pdf) |
         files: release-files/*.pdf
