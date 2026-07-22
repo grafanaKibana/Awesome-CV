@@ -63,7 +63,7 @@ In either case, this results in the creation of the corresponding ``.pdf`` files
 Releases are produced automatically by the [Compile PDFs workflow](https://github.com/grafanaKibana/LatexCV/actions/workflows/main.yml):
 
 1. On every push and pull request the LaTeX sources are compiled and uploaded as workflow artifacts.
-2. On a push to `master`, the compiled PDFs are additionally attached to a new GitHub Release named JetBrains-style — `CVBuild <year>.<iteration>` (e.g. `CVBuild 2026.1`), where the iteration increments per release and resets each year.
+2. On a push to `master` **that changes the LaTeX content** (anything under `latex/` or `awesome-cv.cls`), the compiled PDFs are additionally attached to a new GitHub Release named JetBrains-style — `CVBuild <year>.<iteration>` (e.g. `CVBuild 2026.1`), where the iteration increments per release and resets each year. Docs-only or workflow-only changes do not cut a release.
 
 ## Credit
 

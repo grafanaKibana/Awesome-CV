@@ -8,6 +8,31 @@ permissions:
   contents: write
 
 jobs:
+  changes:
+    # Only needed to gate the release job, which runs on pushes to master.
+    # On push, paths-filter diffs with git and needs no pull-requests scope,
+    # which this workflow's contents-only token would otherwise withhold.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    outputs:
+      latex: ${{ steps.filter.outputs.latex }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Detect LaTeX content changes
+      id: filter
+      uses: dorny/paths-filter@v3
+      with:
+        filters: |
+          latex:
+          - 'latex/**'
+          - 'awesome-cv.cls'
+
   build:
     runs-on: ubuntu-latest
     container: texlive/texlive:latest
@@ -49,9 +74,14 @@ jobs:
         path: compiled/*.pdf
 
   release:
-    needs: build
-    # Only publish a release when changes land on master.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs:
+    - build
+    - changes
+    # Only publish a release when the LaTeX content changes land on master.
+    if: >-
+      github.event_name == 'push'
+      && github.ref == 'refs/heads/master'
+      && needs.changes.outputs.latex == 'true'
     runs-on: ubuntu-latest
 
     # Serialize releases so overlapping pushes to master cannot read the same
