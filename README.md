@@ -11,35 +11,19 @@
 </p>
 
 <div align="center">
-  <a href="https://github.com/grafanaKibana/LatexCV/actions/workflows/main.yml">
-    <img alt="Build" src="https://img.shields.io/github/actions/workflow/status/grafanaKibana/LatexCV/main.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white&labelColor=111827&label=build" />
-  </a>
-  <a href="https://github.com/grafanaKibana/LatexCV/releases/latest">
-    <img alt="Latest Release" src="https://img.shields.io/github/v/release/grafanaKibana/LatexCV?style=for-the-badge&logo=github&logoColor=white&labelColor=111827&color=22c55e&label=release" />
-  </a>
-</div>
+   [![Build](https://img.shields.io/github/actions/workflow/status/grafanaKibana/LatexCV/main.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white&labelColor=111827)](github.com/grafanaKibana/LatexCV/actions/workflows/main.yml)
+   [![Latest Release](https://img.shields.io/github/v/release/grafanaKibana/LatexCV?style=for-the-badge&logo=github&logoColor=white&labelColor=111827&color=22c55e)](github.com/grafanaKibana/LatexCV/releases/latest)
 
-<br />
+  [![Download resume.pdf](https://img.shields.io/badge/resume.pdf-Download-22c55e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/resume.pdf)
+  [![Download cv.pdf](https://img.shields.io/badge/cv.pdf-Download-38bdf8?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/cv.pdf)
+  [![Download coverletter.pdf](https://img.shields.io/badge/coverletter.pdf-Download-F59E0B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/coverletter.pdf)
+</div>
 
 ## About
 
 This repository holds my personal **résumé**, **CV (Curriculum Vitae)** and **cover letter**. It is a fork of [posquit0/Awesome-CV](https://github.com/posquit0/Awesome-CV) — the original LaTeX template — customized for my own profile.
 
 The badges above always link to the freshest documents: every push to `master` compiles the LaTeX sources and publishes a new [GitHub Release](https://github.com/grafanaKibana/LatexCV/releases/latest) with `resume.pdf`, `cv.pdf` and `coverletter.pdf` attached. There is no need to dig through the Actions tab to find the latest build — just click a download badge.
-
-## Download
-
-The latest compiled documents are always attached to the newest [release](https://github.com/grafanaKibana/LatexCV/releases/latest):
-
-<div align="center">
-
-| Document | Résumé | CV | Cover Letter |
-| :------- | :----: | :----: | :----: |
-| **Download** | [![Download resume.pdf](https://img.shields.io/badge/resume.pdf-Download-22c55e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/resume.pdf) | [![Download cv.pdf](https://img.shields.io/badge/cv.pdf-Download-38bdf8?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/cv.pdf) | [![Download coverletter.pdf](https://img.shields.io/badge/coverletter.pdf-Download-F59E0B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/coverletter.pdf) |
-
-</div>
-
-The `releases/latest/download/<file>` links resolve to the assets of the most recent release, so they never go stale.
 
 ## How to Build Locally
 
