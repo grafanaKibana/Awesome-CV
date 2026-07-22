@@ -88,9 +88,7 @@ jobs:
 
           Download the latest documents:
 
-          | Document | Download |
-          | --- | --- |
-          | Résumé | [resume.pdf](https://github.com/${{ github.repository }}/releases/latest/download/resume.pdf) |
-          | CV | [cv.pdf](https://github.com/${{ github.repository }}/releases/latest/download/cv.pdf) |
-          | Cover Letter | [coverletter.pdf](https://github.com/${{ github.repository }}/releases/latest/download/coverletter.pdf) |
+          | Document | Résumé | CV | Cover Letter |
+          | --- | --- | --- | --- |
+          | Download | [resume.pdf](https://github.com/${{ github.repository }}/releases/latest/download/resume.pdf) | [cv.pdf](https://github.com/${{ github.repository }}/releases/latest/download/cv.pdf) | [coverletter.pdf](https://github.com/${{ github.repository }}/releases/latest/download/coverletter.pdf) |
         files: release-files/*.pdf
