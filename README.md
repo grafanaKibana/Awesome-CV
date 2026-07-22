@@ -11,12 +11,14 @@
 </p>
 
 <div align="center">
-   [![Build](https://img.shields.io/github/actions/workflow/status/grafanaKibana/LatexCV/main.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white&labelColor=111827)](github.com/grafanaKibana/LatexCV/actions/workflows/main.yml)
-   [![Latest Release](https://img.shields.io/github/v/release/grafanaKibana/LatexCV?style=for-the-badge&logo=github&logoColor=white&labelColor=111827&color=22c55e)](github.com/grafanaKibana/LatexCV/releases/latest)
 
-  [![Download resume.pdf](https://img.shields.io/badge/resume.pdf-Download-22c55e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/resume.pdf)
-  [![Download cv.pdf](https://img.shields.io/badge/cv.pdf-Download-38bdf8?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/cv.pdf)
-  [![Download coverletter.pdf](https://img.shields.io/badge/coverletter.pdf-Download-F59E0B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/coverletter.pdf)
+[![Build](https://img.shields.io/github/actions/workflow/status/grafanaKibana/LatexCV/main.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/actions/workflows/main.yml)
+[![Latest Release](https://img.shields.io/github/v/release/grafanaKibana/LatexCV?style=for-the-badge&logo=github&logoColor=white&labelColor=111827&color=22c55e)](https://github.com/grafanaKibana/LatexCV/releases/latest)
+
+[![Download resume.pdf](https://img.shields.io/badge/resume.pdf-Download-22c55e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/resume.pdf)
+[![Download cv.pdf](https://img.shields.io/badge/cv.pdf-Download-38bdf8?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/cv.pdf)
+[![Download coverletter.pdf](https://img.shields.io/badge/coverletter.pdf-Download-F59E0B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white&labelColor=111827)](https://github.com/grafanaKibana/LatexCV/releases/latest/download/coverletter.pdf)
+
 </div>
 
 ## About
