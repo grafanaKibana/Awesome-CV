@@ -83,12 +83,13 @@
 }
 \setmainfont{Geist}
 \setsansfont{Geist}[
+  Scale=0.95,
   UprightFont=*,
   ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=Geist-Light},
-  FontFace={l}{it}{Font=Geist-LightItalic},
+  BoldFont=Geist-SemiBold,
+  BoldItalicFont=Geist-SemiBoldItalic,
+  FontFace={l}{n}{Font=Geist-ExtraLight},
+  FontFace={l}{it}{Font=Geist-ExtraLightItalic},
 ]
 \setmonofont{Geist Mono}
 % Needed for the photo ID
@@ -195,7 +196,7 @@
   \ifthenelse{\boolean{acvSectionColorHighlight}}{%
     \color{awesome}\sectionstyleface{\@acvSectionTmp}}%
       {\color{text}\sectionstyleface{\@acvSectionTmp}}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
+\newcommand*{\subsectionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{awesome} #1}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
@@ -750,7 +751,7 @@
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} @{\hspace{0.25cm}} L{\textwidth - 4.25cm} R{2.5cm}}
 }{%
     \end{tabular*}
   \end{center}
