@@ -81,30 +81,16 @@
 \defaultfontfeatures{
   Renderer=HarfBuzz,
 }
-\setmainfont{Source Sans 3}[
+\setmainfont{Geist}
+\setsansfont{Geist}[
   UprightFont=*,
   ItalicFont=* Italic,
   BoldFont=* Bold,
   BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=SourceSans3-Light},
-  FontFace={l}{it}{Font=SourceSans3-LightIt},
+  FontFace={l}{n}{Font=Geist-Light},
+  FontFace={l}{it}{Font=Geist-LightItalic},
 ]
-\setsansfont{Source Sans 3}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=SourceSans3-Light},
-  FontFace={l}{it}{Font=SourceSans3-LightIt},
-]
-\newfontfamily\roboto{Roboto}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=Roboto-Light},
-  FontFace={l}{it}{Font=Roboto-LightItalic},
-]
+\setmonofont{Geist Mono}
 % Needed for the photo ID
 \RequirePackage[skins]{tcolorbox}
 % Needed to deal a paragraphs
@@ -185,8 +171,8 @@
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
-\newcommand*{\headerfont}{\roboto\selectfont}
-\newcommand*{\headerfontlight}{\roboto\fontseries{l}\selectfont}
+\newcommand*{\headerfont}{\sffamily}
+\newcommand*{\headerfontlight}{\sffamily\fontseries{l}\selectfont}
 \newcommand*{\footerfont}{\sffamily}
 \newcommand*{\bodyfont}{\sffamily}
 \newcommand*{\bodyfontlight}{\sffamily\fontseries{l}\selectfont}

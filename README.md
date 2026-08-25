@@ -80,9 +80,7 @@ Releases are produced automatically by the [Compile PDFs workflow](https://githu
 
 [**FontAwesome6 LaTeX Package**](https://github.com/braniii/fontawesome) is a LaTeX package that provides access to the [Font Awesome 6](https://fontawesome.com/v6/icons) icon set.
 
-[**Roboto**](https://github.com/google/roboto) is the default font on Android and ChromeOS, and the recommended font for Google’s visual language, Material Design.
-
-[**Source Sans Pro**](https://github.com/adobe-fonts/source-sans-pro) is a set of OpenType fonts that have been designed to work well in user interface (UI) environments.
+[**Geist**](https://github.com/vercel/geist-font) provides the sans-serif and monospaced typefaces used by these documents.
 
 ## See Also
 
