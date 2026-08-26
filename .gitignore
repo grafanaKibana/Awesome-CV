@@ -22,3 +22,7 @@
 *.DS_Store
 
 /.idea/
+/.build-cache/
+/compiled/
+/.omc/
+/.omx/

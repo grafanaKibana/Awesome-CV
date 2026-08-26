@@ -104,8 +104,10 @@ brew install --cask mactex
 brew install --cask basictex
 # Then install additional packages:
 sudo tlmgr update --self
-sudo tlmgr install fontawesome6 roboto sourcesanspro
+sudo tlmgr install fontawesome6
 ```
+
+Install [Geist and Geist Mono](https://github.com/vercel/geist-font/releases/latest) before building.
 
 **Option 2: Docker (No Local Installation)**
 ```bash
@@ -293,6 +295,7 @@ highlighting your key qualifications and experience.
 #### **Other Sections**
 
 Similar patterns for:
+- **Projects** (`latex/shared/projects.tex`) - Add project entries when ready
 - **Honors** (`latex/shared/honors.tex`) - Uses `\cvhonor{position}{title}{location}{date}`
 - **Certificates** (`latex/shared/certificates.tex`) - Uses `\cventry`
 - **Writing** (`latex/shared/writing.tex`) - Publications, articles
@@ -448,8 +451,10 @@ More content here.
 
 **Solution:** Install required fonts:
 ```bash
-sudo tlmgr install fontawesome6 roboto sourcesanspro
+sudo tlmgr install fontawesome6
 ```
+
+Install [Geist and Geist Mono](https://github.com/vercel/geist-font/releases/latest), then rebuild the document.
 
 ### Issue: PDF not updating after changes
 

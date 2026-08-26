@@ -81,30 +81,31 @@
 \defaultfontfeatures{
   Renderer=HarfBuzz,
 }
-\setmainfont{Source Sans 3}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=SourceSans3-Light},
-  FontFace={l}{it}{Font=SourceSans3-LightIt},
-]
-\setsansfont{Source Sans 3}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=SourceSans3-Light},
-  FontFace={l}{it}{Font=SourceSans3-LightIt},
-]
-\newfontfamily\roboto{Roboto}[
-  UprightFont=*,
-  ItalicFont=* Italic,
-  BoldFont=* Bold,
-  BoldItalicFont=* Bold Italic,
-  FontFace={l}{n}{Font=Roboto-Light},
-  FontFace={l}{it}{Font=Roboto-LightItalic},
-]
+\IfFileExists{.build-cache/geist-font/Geist/otf/Geist-Regular.otf}{
+  \setmainfont{Geist-Regular.otf}[Path=.build-cache/geist-font/Geist/otf/]
+  \setsansfont{Geist-Regular.otf}[
+    Path=.build-cache/geist-font/Geist/otf/,
+    Scale=0.95,
+    ItalicFont=Geist-Italic.otf,
+    BoldFont=Geist-SemiBold.otf,
+    BoldItalicFont=Geist-SemiBoldItalic.otf,
+    FontFace={l}{n}{Font=Geist-ExtraLight.otf},
+    FontFace={l}{it}{Font=Geist-ExtraLightItalic.otf},
+  ]
+  \setmonofont{GeistMono-Regular.otf}[Path=.build-cache/geist-font/GeistMono/otf/]
+}{
+  \setmainfont{Geist}
+  \setsansfont{Geist}[
+    Scale=0.95,
+    UprightFont=*,
+    ItalicFont=* Italic,
+    BoldFont=Geist-SemiBold,
+    BoldItalicFont=Geist-SemiBoldItalic,
+    FontFace={l}{n}{Font=Geist-ExtraLight},
+    FontFace={l}{it}{Font=Geist-ExtraLightItalic},
+  ]
+  \setmonofont{Geist Mono}
+}
 % Needed for the photo ID
 \RequirePackage[skins]{tcolorbox}
 % Needed to deal a paragraphs
@@ -185,8 +186,8 @@
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
-\newcommand*{\headerfont}{\roboto\selectfont}
-\newcommand*{\headerfontlight}{\roboto\fontseries{l}\selectfont}
+\newcommand*{\headerfont}{\sffamily}
+\newcommand*{\headerfontlight}{\sffamily\fontseries{l}\selectfont}
 \newcommand*{\footerfont}{\sffamily}
 \newcommand*{\bodyfont}{\sffamily}
 \newcommand*{\bodyfontlight}{\sffamily\fontseries{l}\selectfont}
@@ -209,7 +210,7 @@
   \ifthenelse{\boolean{acvSectionColorHighlight}}{%
     \color{awesome}\sectionstyleface{\@acvSectionTmp}}%
       {\color{text}\sectionstyleface{\@acvSectionTmp}}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
+\newcommand*{\subsectionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{awesome} #1}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
@@ -662,10 +663,10 @@
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \@extrainfo%
         }%
-    } \\[\acvHeaderAfterSocialSkip]%
+    }\par\vspace{\acvHeaderAfterSocialSkip}%
     \ifthenelse{\isundefined{\@quote}}%
       {}%
-      {\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
+      {\headerquotestyle{\@quote}\par\vspace{\acvHeaderAfterQuoteSkip}}%
   \end{minipage}%
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
@@ -694,7 +695,7 @@
 % Usage: \cvsubsection{<subsection-title>}
 \newcommand{\cvsubsection}[1]{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
+  \vspace{-2mm}
   \subsectionstyle{#1}
   \phantomsection
 }
@@ -760,11 +761,12 @@
 % Define an environment for cvhonor
 \newenvironment{cvhonors}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-2mm}
+  \vspace{-4mm}
   \begin{center}
     \setlength\tabcolsep{0pt}
+    \renewcommand{\arraystretch}{0.6}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} >{\centering\arraybackslash}p{1.5cm} @{\hspace{0.25cm}} >{\raggedright\arraybackslash}p{\textwidth - 4.25cm} >{\raggedleft\arraybackslash}p{2.5cm}}
 }{%
     \end{tabular*}
   \end{center}
@@ -772,7 +774,7 @@
 % Define a line of cv information(honor, award or something else)
 % Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
 \newcommand*{\cvhonor}[4]{%
-  \honordatestyle{#4} & \honorpositionstyle{#1}\ifempty{#2}{}{,} \honortitlestyle{#2} & \honorlocationstyle{#3} \\
+  \honordatestyle{#4} & \honorpositionstyle{#1}\ifempty{#2}{}{,} \honortitlestyle{#2} & \makebox[\linewidth][r]{\honorlocationstyle{#3}} \\
 }
 
 % Define an environment for cvskill
@@ -790,6 +792,24 @@
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
   \skilltypestyle{#1} & \leavevmode\skillsetstyle{#2} \\
+}
+
+% Define an environment for project entries
+\newenvironment{cvprojects}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2mm}
+  \setlength\tabcolsep{0pt}
+  \renewcommand{\arraystretch}{0.58}
+  \setlength{\extrarowheight}{0pt}
+  \tabularx{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.5cm}@{\hspace{0.25cm}}>{\raggedleft\arraybackslash}X@{}}
+}{%
+  \endtabularx\par
+}
+
+% Define a project entry
+% Usage: \cvproject{<title>}{<description>}
+\newcommand*{\cvproject}[2]{%
+  \skilltypestyle{#1} & \skillsetstyle{#2} \\[0.15mm]
 }
 
 % Define an environment for cvitems(for cventry)
