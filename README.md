@@ -29,34 +29,31 @@ The badges above always link to the freshest documents: every push to `master` c
 
 ## How to Build Locally
 
-#### Requirements
+### Requirements
 
-A full TeX distribution is assumed.  [Various distributions for different operating systems (Windows, Mac, \*nix) are available](http://tex.stackexchange.com/q/55437) but TeX Live is recommended.
-You can [install TeX from upstream](https://tex.stackexchange.com/q/1092) (recommended; most up-to-date) or use `sudo apt-get install texlive-full` if you really want that.  (It's generally a few years behind.)
+The build script currently supports macOS on Apple silicon and uses the standard `curl`, `shasum`, `tar` and `sed` command-line tools. A separate TeX installation is not required.
 
-If you don't want to install the dependencies on your system, this can also be obtained via [Docker](https://docker.com).
+### Build the PDFs
 
-#### Usage
-
-At a command prompt, run
+From the repository root, run:
 
 ```bash
-make
+./build.sh
 ```
 
-This compiles all documents into the `compiled/` directory. To build a single document you can also run `xelatex` directly:
+On the first run, the script:
 
-```bash
-xelatex {your-cv}.tex
-```
+1. Downloads pinned versions of Tectonic, Geist and Font Awesome into `.build-cache/`.
+2. Verifies each download with its SHA-256 checksum.
+3. Compiles the CV, resume and cover letter.
 
-Or, without installing anything locally, using Docker:
+The generated files are:
 
-```bash
-docker run --rm --user $(id -u):$(id -g) -i -w "/doc" -v "$PWD":/doc texlive/texlive:latest make
-```
+- `compiled/cv.pdf`
+- `compiled/resume.pdf`
+- `compiled/coverletter.pdf`
 
-In either case, this results in the creation of the corresponding ``.pdf`` files.
+Later runs reuse `.build-cache/`; rerun `./build.sh` after changing the LaTeX sources.
 
 ## Releases
 
@@ -81,7 +78,3 @@ Releases are produced automatically by the [Compile PDFs workflow](https://githu
 [**FontAwesome6 LaTeX Package**](https://github.com/braniii/fontawesome) is a LaTeX package that provides access to the [Font Awesome 6](https://fontawesome.com/v6/icons) icon set.
 
 [**Geist**](https://github.com/vercel/geist-font) provides the sans-serif and monospaced typefaces used by these documents.
-
-## See Also
-
-* [Awesome Identity](https://github.com/posquit0/hugo-awesome-identity) - A single-page Hugo theme to introduce yourself.
